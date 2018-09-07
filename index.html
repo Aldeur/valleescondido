@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	
+	<title>Quick Start - Leaflet</title>
+
+	<meta http-equiv="Content-Type" content="text/html; charset="UTF-8" />
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<link rel="shortcut icon" type="image/x-icon" href="docs/images/favicon.ico" />
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css" integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA==" crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js" integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA==" crossorigin=""></script>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+
+
+	
+</head>
+<body>
+
+
+<center><h1>Ubicación Solicitud</h1></center>
+<center><div id="mapid" style="width: 500px; height: 500px;"></div></center><br><br>
+<script>
+
+	var mymap = L.map('mapid').setView([-36.8017042,-73.06075], 15.4);
+
+	L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+		maxZoom: 18,
+		attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
+			'<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+			'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+		id: 'mapbox.streets'
+	}).addTo(mymap);
+
+	L.marker([-36.798632, -73.059980]).addTo(mymap)
+		.bindPopup("<b>[1]</b> Pasos de cebra en las esquinas mas peligrosas").openPopup();
+	L.marker([-36.8006007,-73.05719]).addTo(mymap)
+		.bindPopup("<b>[2]</b>");
+	L.marker([-36.8022195,-73.0573801]).addTo(mymap)
+		.bindPopup("<b>[3]</b>");
+	L.marker([-36.8028878,-73.0578872]).addTo(mymap)
+		.bindPopup("<b>[4]</b>");
+	L.marker([-36.8033232,-73.0582975]).addTo(mymap)
+		.bindPopup("<b>[5]</b><br/><b>[16]</b>");
+	/*L.marker([		]).addTo(mymap)
+		.bindPopup("6");
+	L.marker([		]).addTo(mymap)
+		.bindPopup("7");
+	L.marker([		]).addTo(mymap)
+		.bindPopup("8");							*/	
+	L.marker([-36.8017329,-73.0612552]).addTo(mymap)
+		.bindPopup("<b>[9]</b>");
+	/*L.marker([		]).addTo(mymap)
+		.bindPopup("10");		*/
+	L.marker([-36.8032943,-73.0553389]).addTo(mymap)
+		.bindPopup("<b>[11]</b>");
+	L.marker([-36.8067876,-73.0657326]).addTo(mymap)
+		.bindPopup("<b>[12]</b><br/><b>[14]</b><br/><b>[15]</b><br/>");
+/*
+	L.marker([-36.804227,-73.061916]).addTo(mymap)
+		.bindPopup("13");			
+	L.marker([		]).addTo(mymap)
+		.bindPopup("14");	
+	L.marker([		]).addTo(mymap)
+		.bindPopup("15");
+	L.marker([		]).addTo(mymap)
+		.bindPopup("16");		
+*/		
+/**
+	L.circle([51.508, -0.11], 500, {
+		color: 'red',
+		fillColor: '#f03',
+		fillOpacity: 0.5
+	}).addTo(mymap).bindPopup("I am a circle.");
+
+	L.polygon([
+		[51.509, -0.08],
+		[51.503, -0.06],
+		[51.51, -0.047]
+	]).addTo(mymap).bindPopup("I am a polygon.");
+
+
+	var popup = L.popup();
+
+	function onMapClick(e) {
+		popup
+			.setLatLng(e.latlng)
+			.setContent("You clicked the map at " + e.latlng.toString())
+			.openOn(mymap);
+	}
+**/
+  var popup = L.popup();
+	mymap.on('click', onMapClick);
+
+</script>
+	
+<table class="table table-bordered">
+  <thead class="thead-light">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Solicitud</th>
+      <th scope="col">Ubicación</th>
+      <th scope="col">Efecto o consecuencia</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Pasos de cebra en las esquinas mas peligrosas, ver factibilidad de sacar paso de cebra, existe uno metros mas allá.</td>
+      <td>A la entrada al Valle, llegando desde el Mall, frente a la Planta de Revisión Técnica.</td>
+      <td>Paso de cebra muy encima, teniendo como referencia que se está haciendo abandonando de  una calle de alta velocidad, peligro de accidente por alcance.</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Repintar con pintura de alto tráfico la acera, no estacionar</td>
+      <td>A la entrada al Valle Escondido completa, toda la acera que colinda con las automotoras.</td>
+      <td>Posible colisión, obstrucción.</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td>Pasos de cebra en las esquinas mas peligrosas, ver factibilidad de cambiar o correr  el paso de cebra.</td>
+      <td>A la entrada del Valle llegando desde el Mall, inicio de calle Cataluña.</td>
+      <td>El peatón no ve el vehículo cuando atraviesa, el vehículo tiene poco tiempo de reacción, está en una curva poca visión.</td>
+    </tr>
+    <tr>
+      <th scope="row">4</th>
+      <td>Solicitar la intervención, con autos mal estacionados letreros no estacionar ni detenerse.</td>
+      <td>Calle Cataluña frente a los primero edificios.</td>
+      <td>Accidentes, obstrucción, producto de los vehículos que esperan pasajeros.</td>
+    </tr>
+    <tr>
+      <th scope="row">5</th>
+      <td>Solicitar la intervención con autos mal estacionados, letreros no estacionar en Plaza Los Españoles, se estacionan sobre las veredas.</td>
+      <td>Calle Cataluña frente a Restaurant Sal y Brasas</td>
+      <td>Los vehículos están destruyendo el pavimento y áreas verdes</td>
+    </tr>
+    <tr>
+      <th scope="row">6</th>
+      <td>Solicitar la intervención con autos mal estacionados, letreros no estacionar.</td>
+      <td>Calle Cataluña con calle Jesús Palou</td>
+      <td>Poca visión al doblar de entrada y salida puede provocar un accidente, como referencia ya ocurrió.</td>
+    </tr>
+    <tr>
+      <th scope="row">7</th>
+      <td>Señal ética de baja velocidad – Lomo de toro</td>
+      <td>Calle Cataluña</td>
+      <td>Atropellos de personas, lugar con afluencia de público. PUB, ya ha ocurrido con resultado de muerte.</td>
+    </tr>
+    <tr>
+      <th scope="row">8</th>
+      <td>Señal ética de baja velocidad  -Lomo de Toro mekano, niños jugando mascotas</td>
+      <td>Calle Jesús Palou</td>
+      <td>Atropellos de mascotas o niños, ya ha ocurrido muerte y atropello de mascotas.</td>
+    </tr>
+    <tr>
+      <th scope="row">9</th>
+      <td>Barreras de Contención en la intersección</td>
+      <td>Calles Jesús Palou con Valencia</td>
+      <td>Con la creación de la Escuela de Suboficiales de Carabineros y la cantidad de gente que trabaja en el lugar y que a la vez  hace ingreso por el valle a esas instalaciones, el tránsito a la llegada de las actividades  es alto y de alta velocidad. Referencia, al doblar los vehículos, algunos chocan con la acera, esto a ocurrido.</td>
+    </tr>
+    <tr>
+      <th scope="row">10</th>
+      <td>Lomo de Toro</td>
+      <td>Calle Valencia</td>
+      <td>Lo escrito en el párrafo precedente.</td>
+    </tr>
+    <tr>
+      <th scope="row">11</th>
+      <td>Semáforo con mas tiempo</td>
+      <td>Salida a Paicaví</td>
+      <td>Colas en hora punta demasiado largas.</td>
+    </tr>
+    <tr>
+      <th scope="row">12</th>
+      <td>Estudio de Transporte Urbano, con el propósito de ver la mitigación con respecto de la construcción del Colegio Inmaculada Concepción.</td>
+      <td>Valencia al llegar a Aníbal Pinto</td>
+      <td>Tacos en las mañanas y al mediodía, lentitud para salir de las personas que van a sus trabajos y que salen de valle.</td>
+    </tr>
+    <tr>
+      <th scope="row">13</th>
+      <td>Ver factibilidad de poner letrero con preferencia de transito por cierto sector.</td>
+      <td>Camiones y maquinaria pesada que ingrese al Valle por calles Aníbal Pinto y  Paicavi, circular por Calle  Tucapel.</td>
+      <td>Posible destrucción de las calles del interior, generación de polvo y ruido.</td>
+    </tr>
+    <tr>
+      <th scope="row">14</th>
+      <td>Ver factibilidad de cambiar paradero y sacar árboles, lado izquierdo.</td>
+      <td>Desde calle Valencia saliendo a Aníbal Pinto existen problemas de visibilidad</td>
+      <td>Posible destrucción de las calles del interior, generación de polvo y ruido.</td>
+    </tr>
+    <tr>
+      <th scope="row">15</th>
+      <td>Solicitar la intervención con autos mal estacionados letreros no estacionar.</td>
+      <td>Calle Aníbal Pinto con Valencia calle de alta circulación vehicular.</td>
+      <td>Interrupción de tránsito. Existen varios locales de venta seguidos  y la gente se estaciona como si existieran pistas suficientes, se sugiere reforzar con signos de señal ética de no estacionar.</td>
+    </tr>
+    <tr>
+      <th scope="row">16</th>
+      <td>Cambiar de lugar la campana del vidrio, (lugar de acopio para vidrios y botellas) </td>
+      <td>Cataluña con Jesús Palou</td>
+      <td>Obstaculiza la visión vehicular al doblar. Lo otro, como en frente existe un PUB, el lugar se ha convertido en el depósito de todo tipo de basura, la cual es desordenada por perros.
+</td>
+    </tr>
+
+  </tbody>
+</table>
+
+
+
+
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+
+</body>
+</html>
